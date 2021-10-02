@@ -25,4 +25,27 @@ public class Battery{
     public double getPowerCapacity(){
         return this.voltage * this.ampHours;
     }
+
+    public boolean isEquals(Battery battery) {
+        if (battery.voltage == this.voltage ) return true;
+        return false;
+    }
+
+    public boolean isBigger(Battery battery) {
+        double thisSize = this.dimensionMm[0] * this.dimensionMm[1] * this.dimensionMm[2];
+        double batterySize = battery.dimensionMm[0] * battery.dimensionMm[1] * battery.dimensionMm[2];
+        return thisSize > batterySize ? true: false;
+    }
+
+    public boolean isBiggerOrEqual(Battery battery) {
+        return isBigger(battery) || isEquals(battery);
+    }
+
+    public boolean isSmaller(Battery battery) {
+        return !isBigger(battery);
+    }
+
+    public boolean isSmallerOrEqual(Battery battery) {
+        return isSmaller(battery) || isEquals(battery);
+    }
 }
